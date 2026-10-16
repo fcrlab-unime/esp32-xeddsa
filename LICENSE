@@ -1,0 +1,39 @@
+MIT License
+
+Copyright (c) 2025 Tim Henkes (Syndace)
+Copyright (c) 2025 Antonino Mastronardo
+
+This project is a port of [libxeddsa](https://github.com/Syndace/libxeddsa)
+(Copyright (c) 2025 Tim Henkes (Syndace)) to the Espressif ESP-IDF. The
+original libxeddsa source files under `src/` and `include/` remain the
+copyright of Tim Henkes (Syndace) and are reproduced here under the MIT
+License with the original copyright notice preserved, as MIT requires.
+
+The ESP-IDF build-integration and porting work (the top-level and `ref10/`
+CMake build system, the trimmed `ref10/crypto_sign` file set, the
+`ESP_PLATFORM` handling in `ref10/include/cross_platform.h`, and the
+documentation) is Copyright (c) 2025 Antonino Mastronardo, and is likewise
+licensed under the MIT License.
+
+The `ref10/crypto_sign/` elliptic-curve arithmetic is derived from Daniel J.
+Bernstein's public-domain ref10 implementation of Curve25519/Ed25519; those
+files are in the public domain and are redistributed without copyright
+claim.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
