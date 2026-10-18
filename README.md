@@ -306,6 +306,44 @@ performed:
 
 ---
 
+## Binary size
+
+To measure the real footprint of the port, the component was built into a
+minimal ESP-IDF project containing exactly three things:
+
+1. **`libxeddsa`** — this repository under `components/`
+2. **`libsodium`** — the registry component `espressif/libsodium`
+3. **`main.c`** - that does nothing but declare an empty `void app_main()`
+
+Because the application logic is empty, everything in the final image comes
+from the two components, the trimmed ref10 arithmetic, and the ESP-IDF
+runtime needed to boot and link them. The `README.md`, `LICENSE`, and `ref10/README.md` are not included in the total image size.
+
+```
+                              Memory Type Usage Summary
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Memory Type/Section   ┃ Used [bytes] ┃ Used [%] ┃ Remain [bytes] ┃ Total [bytes] ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ Flash Code            │        61606 │          │                │               │
+│    .text              │        61606 │          │                │               │
+│ IRAM                  │        52847 │    40.32 │          78225 │        131072 │
+│    .text              │        51819 │    39.53 │                │               │
+│    .vectors           │         1028 │     0.78 │                │               │
+│ Flash Data            │        37064 │          │                │               │
+│    .rodata            │        36808 │          │                │               │
+│    .appdesc           │          256 │          │                │               │
+│ DRAM                  │        12508 │     6.92 │         168228 │        180736 │
+│    .data              │        10260 │     5.68 │                │               │
+│    .bss               │         2248 │     1.24 │                │               │
+│ RTC SLOW              │           56 │     0.68 │           8136 │          8192 │
+│    .force_slow        │           32 │     0.39 │                │               │
+│    .rtc_slow_reserved │           24 │     0.29 │                │               │
+└───────────────────────┴──────────────┴──────────┴────────────────┴───────────────┘
+Total image size: 161809 bytes (.bin may be padded larger)
+```
+
+---
+
 ## Repository layout
 
 ```
